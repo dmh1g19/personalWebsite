@@ -1,0 +1,225 @@
+@keyframes crt-flicker-title {
+    0% { opacity: 1; }
+    10% { opacity: 0.9; }
+    20% { opacity: 1; }
+    30% { opacity: 0.9; }
+    40% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@font-face {
+    font-family: 'IBM3270';
+    src: url('~/assets/fonts/3270-Regular.ttf') format('truetype');
+}
+
+@keyframes flicker-short {
+    0%, 100% { opacity: 1; }
+    90% { opacity: 0.95; }
+    95%, 97%, 99% { opacity: 0; }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    90% { opacity: 0.95; }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes initialRapidFlicker {
+    0%,  80% { background-color: #33ff33; color: black; }
+    10%, 70% { background-color: black; color: #33ff33; }
+}
+
+@keyframes hoverFlicker {
+    0%, 100% { background-color: #33ff33; color: black; }
+    50% { background-color: rgba(51, 255, 51, 0.8); color: black; }
+}
+
+h2 a, h3 a, h4 a, h5 a {
+    color: inherit; /* Sets the color to the inherited value from parent elements */
+    text-decoration: none; /* Removes underlining from links */
+}
+
+pre {
+    background-color: #161616;
+    border: 1px solid #33ff33;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: left;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.larger-text {
+  font-size: 30px;
+}
+
+.text-with-scanlines {
+    position: relative;
+    color: #33ff33; /* Example text color */
+}
+
+.text-with-scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 0.1px,
+        rgba(0, 0, 0, 0.5) 1.5px,
+        transparent 2px
+    );
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+    color: #33ff33; /* Green text */
+    font-family: 'IBM3270', monospace;
+    background: repeating-linear-gradient(
+                    black,
+                    black 1px,
+                    rgba(18, 16, 16, 0.55) 1px,
+                    black 2px
+                );
+    background-size: 100% 2px;
+    animation: flicker 3s infinite;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+input[type="text"], h1, p {
+    text-shadow: 0 0 0px rgba(51, 255, 51, 0.8);
+}
+
+img {
+    animation: crt-flicker-title 1s linear 30s infinite;
+}
+
+h1 {
+    background-color: #33ff33; /* Green background */
+    color: black; /* Inverted text color */
+    text-align: center;
+    width: 100%; /* Full width of the container */
+    padding: 10px 0; /* Add some padding for better visual appearance */
+    margin: 0; /* Remove default margin */
+    animation: crt-flicker-title 1s linear 30s infinite;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* Sets the height of the container to the full viewport height */
+}
+
+.split-screen {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  height: 100vh; /* Adjust based on the height of your header */
+  align-items: stretch; /* Stretches the child elements to fill the container */
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  padding: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.left-panel {
+  border-right: 1px solid #33ff33; /* Thin line dividing the two segments */
+}
+
+.projects-text {
+  color: #33ff33; /* Green text */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+.projects-text:hover {
+    background-color: #33ff33; /* Green background on hover */
+    color: black; /* Inverted text color on hover */
+    animation: initialRapidFlicker 0.5s 1, hoverFlicker 0.5s infinite;
+    animation-delay: 0s, 0.2s; /* Delay the regular flicker until the initial one completes */
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 0 auto;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    color: #33ff33;
+    font-family: 'Courier New', monospace;
+    cursor: text;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.blinking-cursor {
+  padding-right: 10px;
+}
+
+.blinking-cursor, .blinking-pipe {
+    animation: blink 0.5s step-start infinite;
+}
+
+.search-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    color: transparent; /* Ensures text isn't visible */
+    font-family: 'Courier New', monospace;
+    outline: none;
+    padding: 10px;
+    z-index: 1;
+    opacity: 0; /* Makes the input effectively invisible */
+}
+
+
+.search-display {
+    color: #33ff33;
+    z-index: 0;
+}
+
+.projects-text a, .projects-text a:hover {
+    color: #33ff33; /* Green text color */
+    text-decoration: none; /* No underline by default */
+}
+
+.projects-text a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
