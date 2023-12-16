@@ -39,13 +39,12 @@ const inputRef = ref(null);
 const searchValue = ref("");
 const searchResult = ref([]);
 const currentProject = ref({});
+const markdownContent = ref(''); 
+const renderedContent = computed(() => marked(markdownContent.value));
 
 const focusInput = () => {
   inputRef.value.focus();
 };
-
-const markdownContent = ref(''); 
-const renderedContent = computed(() => marked(markdownContent.value));
 
 const setCurrentProject = async (project) => {
   currentProject.value = project;

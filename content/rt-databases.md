@@ -197,11 +197,16 @@ We can also observe that WallTime is **O(1/NumThreads)** for number of threads, 
 <br>
 
 <img src="/img/1.7.png" width="600">
+<br>
 
 <img src="/img/2.1.png" width="600">
+<br>
 
 <img src="/img/2.2.png" width="600">
+<br>
 
 <img src="/img/2.3.png" width="600">
+<br>
 
 <img src="/img/2.5.png" width="600">
+<br>
