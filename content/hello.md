@@ -4,8 +4,7 @@ description: Hello there
 recommended: true
 ---
 # Hello!
-
-About me
+<br>
 
 <!-- ![self portrait](images/a.png) -->
 <img src="/img/a.png" alt="self portrait" width="300" height=auto>
