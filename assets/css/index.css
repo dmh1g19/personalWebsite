@@ -140,6 +140,26 @@ h1 {
   max-height: 90vh;
   overflow-y: auto;
 }
+.left-panel::-webkit-scrollbar {
+    width: 0px;
+}
+.left-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.left-panel::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 6px;
+}
+.right-panel::-webkit-scrollbar {
+    width: 0px;
+}
+.right-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.right-panel::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 6px;
+}
 
 .left-panel {
   border-right: 1px solid #33ff33; /* Thin line dividing the two segments */
