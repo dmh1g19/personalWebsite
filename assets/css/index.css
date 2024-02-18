@@ -118,6 +118,16 @@ h1 {
     animation: crt-flicker-title 1s linear 30s infinite;
 }
 
+.categories-container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
 .center-container {
   display: flex;
   flex-direction: column;
@@ -163,6 +173,19 @@ h1 {
 
 .left-panel {
   border-right: 1px solid #33ff33; /* Thin line dividing the two segments */
+}
+
+.category-text {
+  color: #33ff33; /* Green text */
+  background-color: #161616;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  width: 100px;
+}
+.category-text:hover {
+    background-color: #33ff33; /* Green background on hover */
+    color: black; /* Inverted text color on hover */
+    animation: initialRapidFlicker 0.5s 1, hoverFlicker 0.5s infinite;
+    animation-delay: 0s, 0.2s; /* Delay the regular flicker until the initial one completes */
 }
 
 .projects-text {

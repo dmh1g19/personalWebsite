@@ -1,12 +1,16 @@
 ---
 title: Simple physics simulation using Box2D
 description: Box2D + SDL2 + GLUT + OpenGL
+category: Physics
 recommended: true
 ---
 
 What we're making:
 
 <img src="/img/test.gif" alt="self portrait" width="500">
+
+
+This uses an old openGL pipeline - not to be repeated! :)
 
 
 ```C++

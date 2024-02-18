@@ -1,6 +1,7 @@
 ---
 title: Modeling an ml model for detecting bots in a social network
 description: Using logictic regression and RF
+category: ML
 recommended: true
 ---
 

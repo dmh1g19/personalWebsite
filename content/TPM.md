@@ -1,6 +1,7 @@
 ---
 title: Exploring the Trusted Platform Module (TPM)
 description: the most popular root of trust method for most computers
+category: Sec ops
 recommended: true
 ---
 

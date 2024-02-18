@@ -1,6 +1,7 @@
 ---
 title: Dynamic scheduling visualization with Cheddar
 description: Lets get a visual perspective and implement some code!
+category: RT
 recommended: true
 ---
 

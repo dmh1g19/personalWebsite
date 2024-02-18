@@ -1,6 +1,7 @@
 ---
 title: Real-time system scheduling overview
 description: Exploring scheduling algorithms for real time systems!
+category: RT
 recommended: true
 ---
 

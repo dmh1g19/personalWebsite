@@ -1,6 +1,7 @@
 ---
 title: About me 
 description: Hello there
+category: Random
 recommended: true
 ---
 # Hello!
