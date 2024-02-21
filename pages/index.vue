@@ -17,22 +17,22 @@
         </div>
 
         <div class="categories-container">
-          <div class="category-text" @click="fetchAllProjects">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'All' }" @click="handleAllClick">
             <p><strong>All</strong></p>
           </div>
-          <div class="category-text" @click="selectCategory('ML')">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'ML' }" @click="() => { selectCategory('ML'); playSoundBasic('heavy_click_1'); }">
             <p><strong>ML</strong></p>
           </div>
-          <div class="category-text" @click="selectCategory('Physics')">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Physics' }" @click="() => { selectCategory('Physics'); playSoundBasic('heavy_click_1'); }">
             <p><strong>Physics</strong></p>
           </div>
-          <div class="category-text" @click="selectCategory('RT')">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'RT' }" @click="() => { selectCategory('RT'); playSoundBasic('heavy_click_1'); }">
             <p><strong>Real Time</strong></p>
           </div>
-          <div class="category-text" @click="selectCategory('Sec ops')">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Sec ops' }" @click="() => { selectCategory('Sec ops'); playSoundBasic('heavy_click_1'); }">
             <p><strong>Sec ops</strong></p>
           </div>
-          <div class="category-text" @click="selectCategory('Random')">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Random' }" @click="() => { selectCategory('Random'); playSoundBasic('heavy_click_1'); }">
             <p><strong>Random</strong></p>
           </div>
         </div>
@@ -40,7 +40,7 @@
         <ul>
           <li v-for="post in searchResult" :key="post._path" @click="setCurrentProject(post)">
 
-            <div class="projects-text">
+            <div class="projects-text"  @mouseenter="() => playSoundBasic('key_hover_1')" @click="playSoundBasic('key_press_1')">
               <p><strong>{{ post.title }}</strong></p>
               <p>{{ post.description }}</p>
             </div>
@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-
+import { onMounted, onUnmounted } from 'vue';
 import { ref, watch, computed } from 'vue';
 import { marked } from 'marked';
 
@@ -69,8 +69,52 @@ const inputRef = ref(null);
 const searchValue = ref("");
 const searchResult = ref([]);
 const currentProject = ref({});
-const markdownContent = ref(''); 
+const markdownContent = ref('');
+const selectedCategory = ref("");
 const renderedContent = computed(() => marked(markdownContent.value));
+
+const audioContext = ref(null);
+const audioBuffer = ref(null);
+
+const loadSound = async (url) => {
+  const response = await fetch(url);
+  const arrayBuffer = await response.arrayBuffer();
+  audioContext.value.decodeAudioData(arrayBuffer, (buffer) => {
+    audioBuffer.value = buffer;
+    playSound();
+  }, (error) => console.error('Error with decoding audio data:', error));
+};
+
+const playSound = () => {
+  const source = audioContext.value.createBufferSource();
+  source.buffer = audioBuffer.value;
+  source.connect(audioContext.value.destination);
+  source.loop = true;
+  source.start(0);
+};
+
+//onMounted(async () => {
+//  if (!audioContext.value) {
+//    audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
+//  }
+//  await loadSound(new URL('@/assets/sounds/bg_loop.wav', import.meta.url).href);
+//});
+
+onUnmounted(() => {
+  if (audioContext.value) {
+    audioContext.value.close();
+  }
+});
+
+const playSoundBasic = async (soundName) => {
+  try {
+    const module = await import(`@/assets/sounds/${soundName}.wav`);
+    const audio = new Audio(module.default);
+    audio.play();
+  } catch (error) {
+    console.error('Error playing sound:', error);
+  }
+};
 
 const focusInput = () => {
   inputRef.value.focus();
@@ -83,10 +127,17 @@ const setCurrentProject = async (project) => {
 };
 
 const selectCategory = async (category) => {
+  selectedCategory.value = category; // Set the selected category
   searchResult.value = await queryContent("/")
     .where({ category: { $eq: category } })
     .only(["_path", "title", "description", "category"])
     .find();
+};
+
+const handleAllClick = async () => {
+  await playSoundBasic('heavy_click_1');
+  await selectCategory('All');
+  await fetchAllProjects();
 };
 
 async function fetchMarkdown(path) {
@@ -114,18 +165,6 @@ async function searchForContent() {
 
 watch(searchValue, searchForContent);
 
-//async function fetchAllProjects() {
-//  try {
-//    const allProjects = await queryContent("/")
-//      .only(["_path", "title", "description", "category"])
-//      .find();
-//    searchResult.value = allProjects;
-//  } catch (error) {
-//    console.error('Error fetching all projects:', error);
-//    searchResult.value = [];
-//  }
-//}
-
 const fetchAllProjects = async () => {
   try {
     const allProjects = await queryContent("/")
@@ -139,6 +178,7 @@ const fetchAllProjects = async () => {
     if (aboutMeProject) {
       setCurrentProject(aboutMeProject);
     }
+
   } catch (error) {
     console.error('Error fetching all projects:', error);
     searchResult.value = [];
