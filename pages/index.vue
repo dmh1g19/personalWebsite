@@ -20,27 +20,30 @@
           <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'All' }" @click="handleAllClick">
             <p><strong>All</strong></p>
           </div>
-          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'ML' }" @click="() => { selectCategory('ML'); playSoundBasic('heavy_click_1'); }">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'ML' }" @click="() => { selectCategory('ML'); SoundService.playSoundBasic('heavy_click_1'); }">
             <p><strong>ML</strong></p>
           </div>
-          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Physics' }" @click="() => { selectCategory('Physics'); playSoundBasic('heavy_click_1'); }">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Physics' }" @click="() => { selectCategory('Physics'); SoundService.playSoundBasic('heavy_click_1'); }">
             <p><strong>Physics</strong></p>
           </div>
-          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'RT' }" @click="() => { selectCategory('RT'); playSoundBasic('heavy_click_1'); }">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'RT' }" @click="() => { selectCategory('RT'); SoundService.playSoundBasic('heavy_click_1'); }">
             <p><strong>Real Time</strong></p>
           </div>
-          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Sec ops' }" @click="() => { selectCategory('Sec ops'); playSoundBasic('heavy_click_1'); }">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Sec ops' }" @click="() => { selectCategory('Sec ops'); SoundService.playSoundBasic('heavy_click_1'); }">
             <p><strong>Sec ops</strong></p>
           </div>
-          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Random' }" @click="() => { selectCategory('Random'); playSoundBasic('heavy_click_1'); }">
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Random' }" @click="() => { selectCategory('Random'); SoundService.playSoundBasic('heavy_click_1'); }">
             <p><strong>Random</strong></p>
+          </div>
+          <div class="category-text" @click="startAudio">
+            <p><strong>{{ audioStarted ? 'Mute' : 'Un-mute' }}</strong></p>
           </div>
         </div>
 
         <ul>
           <li v-for="post in searchResult" :key="post._path" @click="setCurrentProject(post)">
 
-            <div class="projects-text"  @mouseenter="() => playSoundBasic('key_hover_1')" @click="playSoundBasic('key_press_1')">
+            <div class="projects-text"  @mouseenter="() => SoundService.playSoundBasic('key_hover_1')" @click="SoundService.playSoundBasic('key_press_1')">
               <p><strong>{{ post.title }}</strong></p>
               <p>{{ post.description }}</p>
             </div>
@@ -64,6 +67,7 @@
 import { onMounted, onUnmounted } from 'vue';
 import { ref, watch, computed } from 'vue';
 import { marked } from 'marked';
+import SoundService from '@/services/soundService';
 
 const inputRef = ref(null);
 const searchValue = ref("");
@@ -71,48 +75,19 @@ const searchResult = ref([]);
 const currentProject = ref({});
 const markdownContent = ref('');
 const selectedCategory = ref("");
+const audioStarted = ref(false);
 const renderedContent = computed(() => marked(markdownContent.value));
 
-const audioContext = ref(null);
-const audioBuffer = ref(null);
-
-const loadSound = async (url) => {
-  const response = await fetch(url);
-  const arrayBuffer = await response.arrayBuffer();
-  audioContext.value.decodeAudioData(arrayBuffer, (buffer) => {
-    audioBuffer.value = buffer;
-    playSound();
-  }, (error) => console.error('Error with decoding audio data:', error));
-};
-
-const playSound = () => {
-  const source = audioContext.value.createBufferSource();
-  source.buffer = audioBuffer.value;
-  source.connect(audioContext.value.destination);
-  source.loop = true;
-  source.start(0);
-};
-
-//onMounted(async () => {
-//  if (!audioContext.value) {
-//    audioContext.value = new (window.AudioContext || window.webkitAudioContext)();
-//  }
-//  await loadSound(new URL('@/assets/sounds/bg_loop.wav', import.meta.url).href);
-//});
-
-onUnmounted(() => {
-  if (audioContext.value) {
-    audioContext.value.close();
-  }
-});
-
-const playSoundBasic = async (soundName) => {
-  try {
-    const module = await import(`@/assets/sounds/${soundName}.wav`);
-    const audio = new Audio(module.default);
-    audio.play();
-  } catch (error) {
-    console.error('Error playing sound:', error);
+const startAudio = async () => {
+  if (audioStarted.value) {
+    SoundService.stopAllSounds();
+    SoundService.cleanup();
+    await SoundService.playSoundBasic('end');
+    audioStarted.value = false;
+  } else {
+    await SoundService.playSoundBasic('start_up');
+    await SoundService.playLoop();
+    audioStarted.value = true;
   }
 };
 
@@ -135,7 +110,7 @@ const selectCategory = async (category) => {
 };
 
 const handleAllClick = async () => {
-  await playSoundBasic('heavy_click_1');
+  await SoundService.playSoundBasic('heavy_click_1');
   await selectCategory('All');
   await fetchAllProjects();
 };
@@ -186,7 +161,9 @@ const fetchAllProjects = async () => {
 };
 
 // Call fetchAllProjects when the component is first loaded
-onMounted(fetchAllProjects);
+onMounted(async () => {
+  await fetchAllProjects();
+});
 
 </script>
 
