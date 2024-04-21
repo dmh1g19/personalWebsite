@@ -34,12 +34,14 @@ class SoundService {
     }
   }
 
-  async playSoundBasic(soundName) {
+  async playSoundBasic(soundName, play) {
     try {
       const module = await import(`@/assets/sounds/${soundName}.wav`);
       const audio = new Audio(module.default);
-      audio.play();
-      this.audioObjects.push(audio);
+      if (play) {
+        audio.play();
+        this.audioObjects.push(audio);
+      }
     } catch (error) {
       console.error('Error playing sound:', error);
     }
