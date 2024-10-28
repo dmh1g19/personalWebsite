@@ -7,16 +7,16 @@ recommended: true
 
 \> **https://github.com/dmh1g19/DSQL-for-RDF-documents** 
 
-## Introduction
+# Introduction
 Have you ever found yourself staring at RDF data and wishing you had a magic tool to query it with ease? Well, that’s exactly what we set out to build! Meet our custom domain-specific language (DSL), designed just for querying RDF files in turtle format. Using this DSL feels like giving orders in plain English—just the right dose of simplicity and power for handling those triples of `<subject> <predicate> <object>`.
 
-## The Vision
+# The Vision
 The idea behind our DSL was to simplify querying RDF. Most query languages are either too complex or don’t really "speak RDF." So, we thought, *Let’s create something focused solely on RDF, with keywords and functions that are exactly what we need—no more, no less!* We wrote it in Haskell (yes, we’re nerds), using Alex for tokenizing and Happy for parsing.
 
-## A Peek at the Language Design
+# A Peek at the Language Design
 The language is pretty much a streamlined version of SQL, tailored specifically for RDF triples. We decided that only integers would be allowed as literals to keep things neat and efficient. Instead of building in complex types, we let the program structure handle the heavy lifting. The result? A language that’s both lightweight and surprisingly powerful.
 
-### Some Handy Functions:
+## Some Handy Functions:
 Here’s a quick rundown of the main functions that make the magic happen:
 
 - **IMPORT**: This brings in a turtle file for us to query. Just say `IMPORT filename.txt`.
@@ -31,6 +31,7 @@ Example:
 IMPORT data.txt AS d
 GET [subj, pred, obj] WHERE d[subj, pred, obj] INTO results.txt
 ```
+
 # A Look at Program Semantics
 
 We used Big Step semantics in the interpreter, parsing the program bottom-up. Each line builds toward the final result, with values stored in a super-efficient environment that’s checked at every step. We even implemented a mini CEK machine (Context, Environment, and Kontinuation) to ensure every query ran smoothly, following our syntax rules.
