@@ -19,13 +19,22 @@ However, **combinatory logic** simplifies this system by removing the need for n
 
 The goal is to write a function, `clTransform`, which transforms a given lambda expression into an equivalent combinatory logic expression using the specific translation rules provided. Here is a summary of the transformation process.
 
-## Variables: 
+## To convert lambda calculus expressions into combinatory logic, we follow these steps:
+
+1. **Variable Rules**: If an expression is just a variable, it maps directly to a combinatory variable (`CLVar`).<br></br>
+2. **Application Rules**: If an expression applies one function to another (like `f(x)`), it directly maps as an application in combinatory logic.<br></br>
+3. **Lambda Abstraction Rules**:
+   - If the expression doesn't depend on the input variable, we use the `K` combinator.
+   - If the expression directly returns its input, we use the identity combinator, `I`.
+   - Nested functions (like `λx -> λy -> …`) are handled one at a time, applying these rules to each step.<br></br>
+
+## Variables example: 
 If the expression is a variable, it directly translates to a corresponding combinator.
 
-## Application: 
+## Application example: 
 In lambda calculus (`e1 e2`) translates to an application in combinatory logic (`<e1> <e2>`).
 
-## Lambda Abstractions (`λx -> e`):
+## Lambda Abstractions (`λx -> e`) example:
 1: If `x` does not occur freely in `e`, the abstraction is transformed into `K <e>`.<br></br>
 2: If `λx -> x`, the result is `I`.<br></br>
 3: For nested abstractions (like `λx -> λy -> e`), apply the rule recursively.<br></br>
