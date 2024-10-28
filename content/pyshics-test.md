@@ -125,7 +125,14 @@ int main(int argc,char** argv)
 }
 ```
 
-# Idea #1: Visual graph generator
+# Making a general game engine
+
+This initial project gave me the inspiration to produce a general engine which is flexible enough to use in mutiple projects!
+
+\> **https://github.com/dmh1g19/Graphics-and-physics-library** 
+
+
+# Using the example engine #1: Visual graph generator
 
 The initial experiment above gave me some inspiration to make two simple projects, this time using a current/modern pipeline!
 
@@ -135,7 +142,7 @@ The initial experiment above gave me some inspiration to make two simple project
 
 This time I made a graph visualizing tool!
 
-# Idea #2: Primitive objects physics game
+# Using the example engine #2: Primitive objects physics game
 
 After making a graphing tool I decided to make a more interactive video game!
 

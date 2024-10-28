@@ -1,7 +1,7 @@
 <template>
 <div class="text-with-scanlines">
   <div class="center-container">
-    <h1>Random Projects</h1>
+    <h1>Some Of My Random Projects</h1>
 
     <div class="split-screen">
 
