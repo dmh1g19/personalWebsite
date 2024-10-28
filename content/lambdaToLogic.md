@@ -55,7 +55,7 @@ where ```CLVar Int``` represents variables and ```CLApp``` represents applicatio
 
 For example, the lambda term ```λx -> λy -> y``` would translate to ```K I```, and ```λx -> λy -> y x``` would result in ```S (K (S I)) (S (K K) I)```.
 
-The goal is to write this function so it systematically applies these rules, achieving an accurate combinatory logic representation of any given lambda calculus expression. Let me know if you’d like more details on specific examples or how to approach the code structure!
+The goal is to write this function so it systematically applies these rules, achieving an accurate combinatory logic representation of any given lambda calculus expression.
 
 # The code
 
