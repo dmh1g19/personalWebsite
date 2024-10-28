@@ -1,17 +1,17 @@
 ---
-title: Simple physics simulation using Box2D
+title: Simple physics simulation using Box2D and OpenGL
 description: Box2D + SDL2 + GLUT + OpenGL
 category: Physics
 recommended: true
 ---
 
-What we're making:
+My first approach produced this simple result!
 
 <img src="/img/test.gif" alt="self portrait" width="500">
 
+This approach uses a very old openGL pipeline and outdated GLU library - not to be repeated!
 
-This uses an old openGL pipeline - not to be repeated! :)
-
+This was part of my initial OpenGL research so I saw it fitting to be included!
 
 ```C++
 #include <iostream>
@@ -124,3 +124,21 @@ int main(int argc,char** argv)
 	SDL_Quit();
 }
 ```
+
+# Idea #1: Visual graph generator
+
+The initial experiment above gave me some inspiration to make two simple projects, this time using a current/modern pipeline!
+
+<img src="/img/test1.gif" alt="" width="500">
+
+\> **https://github.com/dmh1g19/graph-library** 
+
+This time I made a graph visualizing tool!
+
+# Idea #2: Primitive objects physics game
+
+After making a graphing tool I decided to make a more interactive video game!
+
+<img src="/img/test2.gif" alt="" heght="500">
+
+\> **https://github.com/dmh1g19/Merge-a-Mundo** 
