@@ -32,6 +32,9 @@
           <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Sec ops' }" @click="() => { selectCategory('Sec ops'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
             <p><strong>Sec ops</strong></p>
           </div>
+          <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Compilers' }" @click="() => { selectCategory('Compilers'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
+            <p><strong>Compilers</strong></p>
+          </div>
           <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Random' }" @click="() => { selectCategory('Random'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
             <p><strong>Random</strong></p>
           </div>
