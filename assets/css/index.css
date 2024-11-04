@@ -272,11 +272,12 @@ ul li {
     text-decoration: underline; 
 }
 
-/* responsinve to mobile screens */
-/* Hides the search container on small screens */
+
+/* responsive to mobile screens */
+/* Hides the search container and buttons on small screens */
 @media (max-width: 768px) {
-  .search-container {
-    display: none; 
+  .search-container, .categories-container {
+    display: none; /* Hides the search and categories */
   }
 
   .larger-text {
@@ -288,8 +289,8 @@ ul li {
   }
   
   .left-panel {
-    flex: 0 0 15%; /* 30% of the total height, doesn't grow or shrink */
-    max-height: 30vh; 
+    flex: 0 0 15%; /* 15% of the total height, doesn't grow or shrink */
+    max-height: 30vh;
     border-bottom: 1px solid #33ff33; /* Adds a horizontal line at the bottom */
   }
 
@@ -298,13 +299,13 @@ ul li {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0; /* Position at the bottom of the left-panel */
-    height: 1px; /* Height of the horizontal line */
+    bottom: 0;
+    height: 1px;
     background-color: #33ff33; /* Color of the line */
   }
   
   .right-panel {
     flex: 1; /* Takes the remaining space */
-    max-height: 70vh; 
+    max-height: 70vh;
   }
 }
