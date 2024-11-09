@@ -74,10 +74,10 @@ pre {
     right: 0;
     bottom: 0;
     background: repeating-linear-gradient(
-        transparent,
-        transparent 0.1px,
-        rgba(0, 0, 0, 0.5) 1.5px,
-        transparent 2px
+    transparent,
+    transparent 0.1px,
+    rgba(0, 0, 0, 0.5) 1.5px,
+    transparent 2px
     );
     pointer-events: none; 
 }
@@ -89,11 +89,11 @@ body, html {
     color: #33ff33; /* Green text */
     font-family: 'IBM3270', monospace;
     background: repeating-linear-gradient(
-                    black,
-                    black 1px,
-                    rgba(18, 16, 16, 0.55) 1px,
-                    black 2px
-                );
+    black,
+    black 1px,
+    rgba(18, 16, 16, 0.55) 1px,
+    black 2px
+    );
     background-size: 100% 2px;
     animation: flicker 3s infinite;
     font-size: 20px;
@@ -150,25 +150,9 @@ h1 {
     max-height: 90vh;
     overflow-y: auto;
 }
-.left-panel::-webkit-scrollbar {
+
+.left-panel::-webkit-scrollbar, .right-panel::-webkit-scrollbar {
     width: 0px;
-}
-.left-panel::-webkit-scrollbar-track {
-    background: transparent;
-}
-.left-panel::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 6px;
-}
-.right-panel::-webkit-scrollbar {
-    width: 0px;
-}
-.right-panel::-webkit-scrollbar-track {
-    background: transparent;
-}
-.right-panel::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 6px;
 }
 
 .left-panel {
@@ -272,40 +256,31 @@ ul li {
     text-decoration: underline; 
 }
 
-
 /* responsive to mobile screens */
-/* Hides the search container and buttons on small screens */
+/* Hides buttons, search bar, and right panel on small screens */
 @media (max-width: 768px) {
-  .search-container, .categories-container {
-    display: none; /* Hides the search and categories */
-  }
-
-  .larger-text {
-    display: none;
-  }
-
-  .split-screen {
-    flex-direction: column;
-  }
-  
-  .left-panel {
-    flex: 0 0 15%; /* 15% of the total height, doesn't grow or shrink */
-    max-height: 30vh;
-    border-bottom: 1px solid #33ff33; /* Adds a horizontal line at the bottom */
-  }
-
-  .left-panel::after {
-    content: ''; /* Required for pseudo-elements */
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background-color: #33ff33; /* Color of the line */
-  }
-  
-  .right-panel {
-    flex: 1; /* Takes the remaining space */
-    max-height: 70vh;
-  }
+    .search-container,
+    .larger-text,
+    .categories-container,
+    .right-panel {
+        display: none; 
+    }
+    
+    .left-panel.active {
+        display: block;
+    }
+    
+    .split-screen {
+        flex-direction: column;
+    }
+   
+    .left-panel {
+        flex: 1;
+        height: 100%;  /* Ensures the left panel uses all available height */
+        border: none;
+    }
+    
+    .projects-text {
+        width: 100%; /* Full width for each project entry */
+    }
 }

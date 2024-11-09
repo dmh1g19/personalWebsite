@@ -1,0 +1,89 @@
+/* General mobile adjustments for the blog page */
+body, html {
+    height: auto; /* Let the body grow with content */
+    margin: 0;
+    background-color: black;
+    color: #33ff33; /* Green text */
+    font-family: 'IBM3270', monospace;
+    background: repeating-linear-gradient(
+    black,
+    black 1px,
+    rgba(18, 16, 16, 0.55) 1px,
+    black 2px
+    );
+    background-size: 100% 2px;
+    animation: flicker 3s infinite;
+    font-size: 20px;
+    overflow: auto; /* Allow scrolling */
+}
+
+/* Main container for blog page */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: 100vh; /* Limit height to screen size */
+    overflow-y: auto; /* Allow scrolling in the container */
+    padding: 10px; /* Add some padding for mobile */
+}
+
+/* Style for the main heading (title) */
+h1 {
+    background-color: #33ff33;
+    color: black;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+    animation: crt-flicker-title 1s linear 30s infinite;
+    font-size: 24px; /* Adjust font size for mobile */
+}
+
+/* Mobile-specific tweaks for layout */
+@media (max-width: 768px) {
+    body, html {
+        height: auto; /* Let the page grow in height */
+        overflow: auto; /* Allow scrolling */
+    }
+
+    /* Scanlines effect for mobile */
+    .text-with-scanlines {
+        position: relative;
+        color: #33ff33;
+        overflow: auto; /* Allow scrolling in the main container */
+    }
+
+    /* Adjust center-container to be scrollable */
+    .center-container {
+        height: auto; /* Allow content to grow */
+        padding: 15px;
+    }
+    .center-container::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    /* Split screen layout for mobile */
+    .split-screen {
+        flex-direction: column; /* Stack panels vertically */
+        height: auto; /* Let the height adjust based on content */
+    }
+
+    /* Adjust left panel to fit content */
+    .left-panel {
+        height: auto; /* Allow panel to grow based on content */
+        max-height: none; /* Remove restriction */
+        padding: 20px;
+        overflow-y: auto; /* Allow scrolling in the left panel */
+    }
+
+    /* Hide right panel on mobile */
+    .right-panel {
+        display: none; /* Hide right panel on mobile */
+    }
+
+    /* Ensure project text fits the screen */
+    .projects-text {
+        width: 100%; /* Ensure full width for project text */
+    }
+}

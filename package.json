@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start": "nuxt start",
-    "gcp-build":""
+    "gcp-build": ""
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -17,8 +17,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "marked": "^11.1.0",
-    "@nuxt/content": ""
+    "@nuxt/content": "",
+    "gray-matter": "^4.0.3",
+    "marked": "^11.1.0"
   }
 }
-
