@@ -9,7 +9,7 @@ This model is based on the following paper:
 **https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9358734**
 
 # Load the data
-```python
+```plaintext
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
@@ -166,3 +166,4 @@ display_scores("Random Forest", y_test, y_pred_rf, y_prob_rf)
     Recall: 0.9336132773445311
     F1 Score: 0.9176493710691824
     AUC: 0.9458598831098275
+```

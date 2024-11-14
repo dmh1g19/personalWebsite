@@ -1,4 +1,5 @@
-/* General mobile adjustments for the blog page */
+/* General mobile adjustments for blog pages */
+
 body, html {
     height: auto; /* Let the body grow with content */
     margin: 0;
@@ -21,9 +22,6 @@ body, html {
 .center-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-height: 100vh; /* Limit height to screen size */
     overflow-y: auto; /* Allow scrolling in the container */
     padding: 10px; /* Add some padding for mobile */
 }

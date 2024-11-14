@@ -1,7 +1,7 @@
 ---
 title: Simple physics simulation using Box2D and OpenGL
 description: Box2D + SDL2 + GLUT + OpenGL
-category: Physics
+category: Games
 recommended: true
 ---
 

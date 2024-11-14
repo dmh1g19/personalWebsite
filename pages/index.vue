@@ -23,8 +23,8 @@
             <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'ML' }" @click="() => { selectCategory('ML'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
               <p><strong>ML</strong></p>
             </div>
-            <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Physics' }" @click="() => { selectCategory('Physics'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
-              <p><strong>Physics</strong></p>
+            <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Games' }" @click="() => { selectCategory('Games'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
+              <p><strong>Games</strong></p>
             </div>
             <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'RT' }" @click="() => { selectCategory('RT'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
               <p><strong>Real Time</strong></p>
