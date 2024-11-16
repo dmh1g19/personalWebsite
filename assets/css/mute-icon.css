@@ -1,0 +1,39 @@
+/* Base mute icon styling */
+.mute-icon {
+    position: relative;
+    width: 30px; /* Adjust width for speaker shape */
+    height: 20px;
+    background: #33ff33; /* Speaker body */
+    clip-path: polygon(0% 20%, 60% 0%, 60% 100%, 0% 80%); /* Speaker-like shape */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Cross lines, initially hidden */
+.mute-icon::before,
+.mute-icon::after {
+    content: '';
+    position: absolute;
+    width: 22px; /* Slightly longer for thickness effect */
+    height: 4px; /* Thicker lines */
+    background: #000000; /* Black lines */
+    top: 50%;
+    left: 47%; /* Shifted slightly to the left */
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(0deg); /* Center lines */
+    opacity: 0; /* Initially invisible */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.mute-icon::before {
+    transform: translate(-50%, -50%) rotate(45deg); /* First diagonal */
+}
+
+.mute-icon::after {
+    transform: translate(-50%, -50%) rotate(-45deg); /* Second diagonal */
+}
+
+/* Toggled state: show the cross */
+.mute-icon.muted::before,
+.mute-icon.muted::after {
+    opacity: 1; /* Make the lines visible */
+}

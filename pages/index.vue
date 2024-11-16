@@ -7,6 +7,8 @@
       
       <div class="split-screen">
         <div class="left-panel" :class="{ active: isSmallScreen && currentProject }">
+          <div class="mute-icon muted" @click="startAudio"></div>
+
           <p class="larger-text">Search for a project below:</p>
           <div class="search-container" @click="focusInput">
             <span class="blinking-cursor">></span>
@@ -38,10 +40,6 @@
             <div class="category-text" :class="{ 'category-text-clicked': selectedCategory === 'Random' }" @click="() => { selectCategory('Random'); SoundService.playSoundBasic('heavy_click_1', playAuxSounds); }">
               <p><strong>Random</strong></p>
             </div>
-            <div class="category-text" @click="startAudio">
-              <p><strong>{{ audioStarted ? 'Mute' : 'Un-mute' }}</strong></p>
-            </div>
-            
           </div>
           
           <ul>
@@ -78,11 +76,13 @@ const selectedCategory = ref("");
 const audioStarted = ref(false);
 const renderedContent = computed(() => marked(markdownContent.value));
 const isSmallScreen = ref(false);
+const isMuted = ref(true);
 
 const router = useRouter();
 let playAuxSounds = false;
 
 const startAudio = async () => {
+  toggleMute();
   if (audioStarted.value) {
     SoundService.playSoundBasic('end', playAuxSounds);
     SoundService.stopAllSounds();
@@ -97,6 +97,14 @@ const startAudio = async () => {
   }
 };
 
+const toggleMute = () => {
+  isMuted.value = !isMuted.value;
+  const muteIcon = document.querySelector('.mute-icon');
+  if (muteIcon) {
+    muteIcon.classList.toggle('muted', isMuted.value);
+  }
+};
+
 const focusInput = () => {
   inputRef.value.focus();
 };
@@ -104,7 +112,7 @@ const focusInput = () => {
 const setCurrentProject = async (project) => {
   if (isSmallScreen.value) {
     // Re-render the page with the selected blog entry for mobile
-    router.push(`/mobile/${project._path.replace(/^\//, '')}.md`); 
+    router.push(`/${project._path.replace(/^\//, '')}.md`); 
   } else {
 
     // Otherwise update the right panel with the blog entry
@@ -186,4 +194,5 @@ onMounted(async () => {
 
 <style>
 @import url("~/assets/css/index.css");
+@import url("~/assets/css/mute-icon.css");
 </style>
