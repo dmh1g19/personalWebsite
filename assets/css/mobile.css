@@ -100,6 +100,10 @@ h1 {
         display: none; /* Hide right panel on mobile */
     }
 
+    .mute-icon {
+        display: none; /* Hide mute button */
+    }
+
     /* Ensure project text fits the screen */
     .projects-text {
         width: 100%; /* Ensure full width for project text */
