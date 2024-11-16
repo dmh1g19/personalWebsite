@@ -9,7 +9,7 @@ This model is based on the following paper:
 **https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9358734**
 
 # Load the data
-```plaintext
+```python
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
@@ -105,7 +105,7 @@ accuracy_lr = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy_lr}')
 ```
 
-    Accuracy: 0.671073717948718
+Accuracy: 0.671073717948718
 
 
 
@@ -120,7 +120,7 @@ accuracy_rf = accuracy_score(y_test, y_pred)
 print(f'Accuracy: {accuracy_rf}')
 ```
 
-    Accuracy: 0.8880876068376068
+Accuracy: 0.8880876068376068
 
 
 # Print results
@@ -153,6 +153,7 @@ display_scores("Random Forest", y_test, y_pred_rf, y_prob_rf)
 
 ```
 
+```plaintext
     Model: Logistic Regression
     Accuracy: 0.671073717948718
     Precision: 0.6700616456714018

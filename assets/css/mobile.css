@@ -18,6 +18,22 @@ body, html {
     overflow: auto; /* Allow scrolling */
 }
 
+pre, code {
+    white-space: pre-wrap; /* Allow wrapping of long lines */
+    word-wrap: break-word; /* Break long words if needed */
+    overflow-x: auto; /* Enable horizontal scrolling for large code */
+    background-color: rgba(0, 0, 0, 0.8); /* Ensure readability on dark theme */
+    color: #33ff33; /* Match the text color */
+    max-width: 100%; /* Ensure code blocks fit within the screen */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Hide scrollbar for aesthetic purposes but keep scrolling */
+pre::-webkit-scrollbar {
+    width: 0;
+    height: 0; /* Optional: hide the scrollbar */
+}
+
 /* Main container for blog page */
 .center-container {
     display: flex;
@@ -43,6 +59,10 @@ h1 {
     body, html {
         height: auto; /* Let the page grow in height */
         overflow: auto; /* Allow scrolling */
+    }
+
+    pre, code {
+        font-size: 14px; /* Reduce font size for better fit on small screens */
     }
 
     /* Scanlines effect for mobile */
