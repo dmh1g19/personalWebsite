@@ -5,13 +5,13 @@ category: Games
 recommended: true
 ---
 
-My first approach produced this simple result!
-
-<img src="/img/test.gif" alt="self portrait" width="500">
-
 This approach uses a very old openGL pipeline and outdated GLU library - not to be repeated!
 
 This was part of my initial OpenGL research so I saw it fitting to be included!
+
+My first approach produced this simple result!
+
+<img src="/img/test.gif" alt="self portrait" width="500">
 
 ```C++
 #include <iostream>
