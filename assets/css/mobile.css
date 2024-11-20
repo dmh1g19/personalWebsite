@@ -16,7 +16,6 @@ body, html {
     animation: flicker 3s infinite;
     font-size: 20px;
     overflow: auto; /* Allow scrolling */
-    padding-left: 50px;
 }
 
 img {
@@ -31,8 +30,8 @@ pre, code {
     word-wrap: break-word; /* Break long words if needed */
     background-color: rgba(0, 0, 0, 0.8); /* Ensure readability on dark theme */
     color: #33ff33; /* Match the text color */
-    max-width: 95%; /* Ensure code blocks fit within the screen */
-    padding-left: 50px;
+    max-width: 99%; /* Ensure code blocks fit within the screen */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Hide scrollbar for aesthetic purposes but keep scrolling */
