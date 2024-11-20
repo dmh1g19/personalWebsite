@@ -1,11 +1,5 @@
 /* General mobile adjustments for blog pages */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body, html {
     height: auto; /* Let the body grow with content */
     margin: 0;
@@ -75,7 +69,7 @@ h1 {
     }
 
     pre, code {
-        font-size: 14px; /* Reduce font size for better fit on small screens */
+        font-size: 10px; /* Reduce font size for better fit on small screens */
     }
 
     /* Scanlines effect for mobile */
