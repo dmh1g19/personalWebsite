@@ -28,11 +28,10 @@ img {
 pre, code {
     white-space: pre-wrap; /* Allow wrapping of long lines */
     word-wrap: break-word; /* Break long words if needed */
-    overflow-x: auto; /* Enable horizontal scrolling for large code */
     background-color: rgba(0, 0, 0, 0.8); /* Ensure readability on dark theme */
     color: #33ff33; /* Match the text color */
-    max-width: 100%; /* Ensure code blocks fit within the screen */
-    box-sizing: border-box; /* Include padding in width calculation */
+    max-width: 95%; /* Ensure code blocks fit within the screen */
+    padding-left: 50px;
 }
 
 /* Hide scrollbar for aesthetic purposes but keep scrolling */
