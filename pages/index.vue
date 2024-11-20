@@ -112,11 +112,7 @@ const focusInput = () => {
 const setCurrentProject = async (project) => {
   if (isSmallScreen.value) {
     // Re-render the page with the selected blog entry for mobile
-    router.push(`/${project._path.replace(/^\//, '')}.md`)
-      .then(() => {
-        // Reload the page after navigation
-        location.reload();
-      });
+    router.push(`/${project._path.replace(/^\//, '')}.md`);
   } else {
 
     // Otherwise update the right panel with the blog entry

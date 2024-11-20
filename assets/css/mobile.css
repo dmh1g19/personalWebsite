@@ -18,6 +18,13 @@ body, html {
     overflow: auto; /* Allow scrolling */
 }
 
+img {
+    display: block;          /* Center alignment */
+    max-width: 90%;         /* Scale down to fit the container */
+    height: auto;            /* Maintain aspect ratio */
+    margin: 0 auto;          /* Center horizontally */
+}
+
 pre, code {
     white-space: pre-wrap; /* Allow wrapping of long lines */
     word-wrap: break-word; /* Break long words if needed */
