@@ -1,10 +1,6 @@
-# My Interesting Projects Website
+# Retro styled personal website
 
-<video width="600" controls>
-  <source src="video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+[![Video Thumbnail](https://img.youtube.com/vi/abYRA-w_sbE/0.jpg)](https://www.youtube.com/watch?v=abYRA-w_sbE)
 
 Welcome to the repository for my personal website. This project showcases a collection of my work, with a focus on creating an engaging and interactive user experience that harks back to the retro aesthetics of early computing.
 
