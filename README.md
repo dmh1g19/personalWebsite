@@ -1,8 +1,6 @@
 # My Interesting Projects Website
 
-<div style="text-align: center;">
-<video src='Screencast 2025-02-09 05:01:44.mp4'/>
-<div>
+<video src='./Screencast 2025-02-09 05:01:44.mp4'/>
 
 Welcome to the repository for my personal website. This project showcases a collection of my work, with a focus on creating an engaging and interactive user experience that harks back to the retro aesthetics of early computing.
 
