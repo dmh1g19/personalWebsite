@@ -1,6 +1,10 @@
 # My Interesting Projects Website
 
-<video src='./output.mp4'/>
+<video width="600" controls>
+  <source src="video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 
 Welcome to the repository for my personal website. This project showcases a collection of my work, with a focus on creating an engaging and interactive user experience that harks back to the retro aesthetics of early computing.
 
